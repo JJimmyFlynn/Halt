@@ -41,7 +41,7 @@ class HaltWrapping {
   }
 
   public function __toString() {
-    $this->templates = apply_filters('sage/wrap_' . $this->slug, $this->templates);
+    $this->templates = apply_filters('halt/wrap_' . $this->slug, $this->templates);
     return locate_template($this->templates);
   }
 
