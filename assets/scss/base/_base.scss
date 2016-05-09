@@ -1,0 +1,40 @@
+// Contains Base Level Styles for [THEME NAME]
+// Author Catchfire Creative
+// Table of Contents:
+// I. HTML and Box Sizing
+// II. Images
+// III. Lists
+
+//----------Base HTML Styles
+html {
+    min-height: 100%;
+    text-size-adjust: 100%;
+}
+
+//----------Box Sizing
+* {
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: borderbox;
+}
+
+//----------Base Images Images
+img {
+  max-width: 100%;
+  font-style: italic; //Offset `alt` text from surrounding copy
+  vertical-align: middle; //Setting `vertical-align` removes the whitespace that appears under `img`
+}
+
+//----------Lists
+/**
+ * Remove extra vertical spacing when nesting lists.
+ */
+li {
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}

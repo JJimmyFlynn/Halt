@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "js/main.js"
+      ],
+      "main": true
+    },
+    "main.css": {
+      "files": [
+        "scss/main.scss"
+      ],
+      "main": true
+    },
+    "customizer.js": {
+      "files": [
+        "js/customizer.js"
+      ]
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    }
+  },
+  "config": {
+    "devUrl": "http://halt.dev"
+  }
+}

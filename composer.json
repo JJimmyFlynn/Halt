@@ -1,0 +1,12 @@
+{
+  "name": "catchfire/halt",
+  "type": "wordpress-theme",
+  "license": "MIT",
+  "keywords": [
+    "wordpress"
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "composer/installers": "~1.0"
+  }
+}

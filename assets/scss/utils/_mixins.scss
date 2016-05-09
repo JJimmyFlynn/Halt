@@ -1,0 +1,63 @@
+// Mixins for use on [THEME]
+// Author: Catchfire Creative
+// Table of Contents:
+// I.   Rem Fallback
+// II.  Clearfix
+// III. Breakpoints
+
+//----------REM Fallback mixin
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@mixin rem-fallback($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $pxValues: #{$pxValues + $value*16}px;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  } 
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $remValues: #{$remValues + $value}rem;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  } 
+  
+  #{$property}: $pxValues; 
+  #{$property}: $remValues; 
+}
+
+//----------Trusty Clearfix
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//----------Breakpoints
+@mixin breakpoint($point) {
+  @if $point == forrest {
+    @media (max-width: 68.75em) { @content; }
+  }
+  @else if $point == tree {
+    @media (max-width: 53em) { @content; }
+  }
+  @else if $point == sapling {
+    @media (max-width: 40em) { @content; }
+  }
+  @else if $point == seedling {
+    @media (max-width: 38.75em) { @content; }
+  }
+}
