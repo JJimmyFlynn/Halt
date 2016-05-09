@@ -9,12 +9,13 @@
  *
  */
 $halt_includes = [
-  'lib/assets.php',     // Scripts and stylesheets
-  'lib/extras.php',     // Custom functions
-  'lib/setup.php',      // Theme setup
-  'lib/titles.php',     // Page titles
-  'lib/wrapper.php',    // Theme wrapper class
-  'lib/customizer.php', // Theme customizer
+  'lib/admin.php',          // Admin Customizations
+  'lib/assets.php',         // Scripts and stylesheets
+  'lib/extras.php',         // Custom functions
+  'lib/setup.php',          // Theme setup
+  'lib/titles.php',         // Page titles
+  'lib/wrapper.php',        // Theme wrapper class
+  'lib/customizer.php',     // Theme customizer
   'lib/bem_nav_walker.php'  // BEM Nav Walker
 ];
 
