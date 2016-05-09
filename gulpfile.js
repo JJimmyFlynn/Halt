@@ -180,7 +180,7 @@ gulp.task('styles', ['wiredep'], function() {
       .pipe(cssTasksInstance));
   });
   return merged
-    .pipe(writeToManifest('scss'));
+    .pipe(writeToManifest('css'));
 });
 
 // ### Scripts
@@ -278,7 +278,7 @@ gulp.task('wiredep', function() {
     .pipe(changed(path.source + 'scss', {
       hasChanged: changed.compareSha1Digest
     }))
-    .pipe(gulp.dest(path.source + 'scss'));
+    .pipe(gulp.dest(path.source + 'css'));
 });
 
 // ### Gulp
