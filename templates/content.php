@@ -1,9 +1,9 @@
-<article <?php post_class(); ?>>
+<section class="general-page">
   <header>
-    <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-    <?php get_template_part('templates/entry-meta'); ?>
+    <h2 class="general-page__title"><?php the_title(); ?></h2>
   </header>
-  <div class="entry-summary">
-    <?php the_excerpt(); ?>
+  <div class="general-page__content">
+    <?php the_content() ?>
   </div>
-</article>
+  <!-- general-page__content -->
+</section>
