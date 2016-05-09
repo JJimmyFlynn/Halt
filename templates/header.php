@@ -1,8 +1,9 @@
 <header class="site-header">
-  <nav class="nav-primary">
+  <nav class="site-nav">
     <?php
     if (has_nav_menu('primary_navigation')) :
-      wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);
+      // For usage instructions see https://github.com/roikles/Wordpress-Bem-Menu
+      bem_menu('primary_navigation', 'site-nav');
     endif;
     ?>
   </nav>
