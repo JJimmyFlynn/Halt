@@ -1,7 +1,7 @@
-<?php get_template_part('templates/page', 'header'); ?>
+<?php
+  
+  /**
+   * 404 Page Template
+   */
 
-<div class="alert alert-warning">
-  <?php _e('Sorry, but the page you were trying to view does not exist.', 'sage'); ?>
-</div>
-
-<?php get_search_form(); ?>
+ get_template_part('templates/page', 'header'); ?>
