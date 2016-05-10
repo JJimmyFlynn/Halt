@@ -251,7 +251,7 @@ gulp.task('watch', function() {
       blacklist: ['/wp-admin/**']
     }
   });
-  gulp.watch([path.source + 'scss/**/*'], ['scss']);
+  gulp.watch([path.source + 'scss/**/*'], ['styles']);
   gulp.watch([path.source + 'js/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
