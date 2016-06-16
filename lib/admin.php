@@ -5,6 +5,16 @@ namespace Halt\Admin;
 /**
  * Admin Customizations
  */
+ 
+ /**
+ * Add Favicon to Admin
+ */
+function halt_add_favicon() {
+    $favicon_url = get_stylesheet_directory_uri() . '/favicon.ico';
+  echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
+}
+add_action('login_head', __NAMESPACE__. '\\halt_add_favicon');
+add_action('admin_head', __NAMESPACE__. '\\halt_add_favicon');
 
 /**
   * Customize Login Screen
