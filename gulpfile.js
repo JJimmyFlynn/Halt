@@ -112,7 +112,7 @@ var cssTasks = function(filename) {
     })
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.write('.', {
-        sourceRoot: 'assets/scss/'
+        sourceRoot: 'assets/styles/'
       }));
     })();
 };
@@ -140,7 +140,7 @@ var jsTasks = function(filename) {
     })
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.write('.', {
-        sourceRoot: 'assets/js/'
+        sourceRoot: 'assets/scripts/'
       }));
     })();
 };
@@ -176,26 +176,26 @@ gulp.task('styles', ['wiredep'], function() {
         this.emit('end');
       });
     }
-    merged.add(gulp.src(dep.globs, {base: 'scss'})
+    merged.add(gulp.src(dep.globs, {base: 'styles'})
       .pipe(cssTasksInstance));
   });
   return merged
-    .pipe(writeToManifest('css'));
+    .pipe(writeToManifest('styles'));
 });
 
 // ### Scripts
 // `gulp scripts` - Runs JSHint then compiles, combines, and optimizes Bower JS
 // and project JS.
-gulp.task('scripts', function() {
+gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
     merged.add(
-      gulp.src(dep.globs, {base: 'js'})
+      gulp.src(dep.globs, {base: 'scripts'})
         .pipe(jsTasks(dep.name))
     );
   });
   return merged
-    .pipe(writeToManifest('js'));
+    .pipe(writeToManifest('scripts'));
 });
 
 // ### Fonts
@@ -251,8 +251,8 @@ gulp.task('watch', function() {
       blacklist: ['/wp-admin/**']
     }
   });
-  gulp.watch([path.source + 'scss/**/*'], ['styles']);
-  gulp.watch([path.source + 'js/**/*'], ['jshint', 'scripts']);
+  gulp.watch([path.source + 'styles/**/*'], ['styles']);
+  gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
@@ -275,10 +275,10 @@ gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
     .pipe(wiredep())
-    .pipe(changed(path.source + 'scss', {
+    .pipe(changed(path.source + 'styles', {
       hasChanged: changed.compareSha1Digest
     }))
-    .pipe(gulp.dest(path.source + 'css'));
+    .pipe(gulp.dest(path.source + 'styles'));
 });
 
 // ### Gulp
