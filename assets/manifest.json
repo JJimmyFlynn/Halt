@@ -2,19 +2,19 @@
   "dependencies": {
     "main.js": {
       "files": [
-        "js/main.js"
+        "scripts/main.js"
       ],
       "main": true
     },
     "main.css": {
       "files": [
-        "scss/main.scss"
+        "styles/main.scss"
       ],
       "main": true
     },
     "customizer.js": {
       "files": [
-        "js/customizer.js"
+        "scripts/customizer.js"
       ]
     },
     "jquery.js": {
