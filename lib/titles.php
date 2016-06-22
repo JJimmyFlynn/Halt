@@ -15,7 +15,7 @@ function title() {
   } elseif (is_archive()) {
     return get_the_archive_title();
   } elseif (is_search()) {
-    return sprintf('Search Results for %s', get_search_query());
+    return sprintf('Search Results for <span class="search-term">%s</span>', get_search_query());
   } elseif (is_404()) {
     return 'Not Found';
   } else {
