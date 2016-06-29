@@ -40,6 +40,15 @@ add_filter('login_headerurl', create_function(false,"return '" . home_url() . "'
 add_filter('login_headertitle', create_function(false,"return '" . get_bloginfo('name') . "';"));
 
 /**
+ * Cleanup Admin Menu
+ */
+function halt_cleanup_admin_menu() {
+  // Remove Comments menu item
+  remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', __NAMESPACE__. '\\halt_cleanup_admin_menu', 999);
+
+/**
  * Remove some dashboard metaboxes
  */
 function halt_cleanup_dashboard() {
