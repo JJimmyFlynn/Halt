@@ -1,41 +1,8 @@
 // Mixins for use on [THEME]
 // Author: Catchfire Creative
 // Table of Contents:
-// I.   Rem Fallback
-// II.  Clearfix
-// III. Breakpoints
-
-//----------REM Fallback mixin
-@function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
-}
-
-@mixin rem-fallback($property, $values...) {
-  $max: length($values);
-  $pxValues: '';
-  $remValues: '';
-
-  @for $i from 1 through $max {
-    $value: strip-unit(nth($values, $i));
-    $pxValues: #{$pxValues + $value*16}px;
-
-    @if $i < $max {
-      $pxValues: #{$pxValues + " "};
-    }
-  } 
-
-  @for $i from 1 through $max {
-    $value: strip-unit(nth($values, $i));
-    $remValues: #{$remValues + $value}rem;
-
-    @if $i < $max {
-      $remValues: #{$remValues + " "};
-    }
-  } 
-  
-  #{$property}: $pxValues; 
-  #{$property}: $remValues; 
-}
+// I.  Clearfix
+// II. Breakpoints
 
 //----------Trusty Clearfix
 @mixin clearfix() {

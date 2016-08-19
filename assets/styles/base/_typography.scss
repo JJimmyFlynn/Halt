@@ -14,7 +14,7 @@ body {
 
 body,
 input,
-button {  
+button {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,32 +27,32 @@ html {
 //----------Heading Sizes
 
 h1, .h1 {
-  @include rem-fallback(font-size, 2rem);
+  font-size: 2rem;
 }
 
 h2, .h2 {
-  @include rem-fallback(font-size, 1.5rem);
+  font-size: 1.5rem;
 }
 
 h3, .h3 {
-  @include rem-fallback(font-size, 1.17rem);
+  font-size: 1.17rem;
 }
 
 h4, .h4 {
-  @include rem-fallback(font-size, 1rem);
+  font-size: 1rem;
 }
 
 h5, .h5 {
-  @include rem-fallback(font-size, 0.83rem);
+  font-size: 0.83rem;
 }
 
 h6, .h6 {
-  @include rem-fallback(font-size, 0.75rem);
+  font-size: 0.75rem;
 }
 
 //----------Paragraphs
 
 p {
   line-height: $line-height;
-  @include rem-fallback(margin, 0, 0, 1rem);
+  margin: 0 0 1rem;
 }
