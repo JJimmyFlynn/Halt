@@ -75,7 +75,7 @@ var revManifest = path.dist + 'assets.json';
 // ```
 // gulp.src(cssFiles)
 //   .pipe(cssTasks('main.css')
-//   .pipe(gulp.dest(path.dist + 'styles'))
+//   .pipe(gulp.dest(path.dist + 'sass'))
 // ```
 var cssTasks = function(filename) {
   return lazypipe()
@@ -112,7 +112,7 @@ var cssTasks = function(filename) {
     })
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.write('.', {
-        sourceRoot: 'assets/styles/'
+        sourceRoot: 'assets/sass/'
       }));
     })();
 };
@@ -122,7 +122,7 @@ var cssTasks = function(filename) {
 // ```
 // gulp.src(jsFiles)
 //   .pipe(jsTasks('main.js')
-//   .pipe(gulp.dest(path.dist + 'scripts'))
+//   .pipe(gulp.dest(path.dist + 'js'))
 // ```
 var jsTasks = function(filename) {
   return lazypipe()
@@ -140,7 +140,7 @@ var jsTasks = function(filename) {
     })
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.write('.', {
-        sourceRoot: 'assets/scripts/'
+        sourceRoot: 'assets/js/'
       }));
     })();
 };
@@ -176,11 +176,11 @@ gulp.task('styles', ['wiredep'], function() {
         this.emit('end');
       });
     }
-    merged.add(gulp.src(dep.globs, {base: 'styles'})
+    merged.add(gulp.src(dep.globs, {base: 'sass'})
       .pipe(cssTasksInstance));
   });
   return merged
-    .pipe(writeToManifest('styles'));
+    .pipe(writeToManifest('css'));
 });
 
 // ### Scripts
@@ -190,12 +190,12 @@ gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
     merged.add(
-      gulp.src(dep.globs, {base: 'scripts'})
+      gulp.src(dep.globs, {base: 'js'})
         .pipe(jsTasks(dep.name))
     );
   });
   return merged
-    .pipe(writeToManifest('scripts'));
+    .pipe(writeToManifest('js'));
 });
 
 // ### Fonts
@@ -251,8 +251,8 @@ gulp.task('watch', function() {
       blacklist: ['/wp-admin/**']
     }
   });
-  gulp.watch([path.source + 'styles/**/*'], ['styles']);
-  gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
+  gulp.watch([path.source + 'sass/**/*'], ['styles']);
+  gulp.watch([path.source + 'js/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
@@ -275,10 +275,10 @@ gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
     .pipe(wiredep())
-    .pipe(changed(path.source + 'styles', {
+    .pipe(changed(path.source + 'sass', {
       hasChanged: changed.compareSha1Digest
     }))
-    .pipe(gulp.dest(path.source + 'styles'));
+    .pipe(gulp.dest(path.source + 'sass'));
 });
 
 // ### Gulp
