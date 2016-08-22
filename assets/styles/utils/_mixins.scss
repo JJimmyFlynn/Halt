@@ -1,30 +1,58 @@
 // Mixins for use on [THEME]
 // Author: Catchfire Creative
 // Table of Contents:
-// I.  Clearfix
-// II. Breakpoints
+// I.   Clearfix
+// II.  Helpers
+// III. Breakpoints
+
 
 //----------Trusty Clearfix
-@mixin clearfix() {
+
+@mixin clearfix-before() {
+  &:before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin clearfix-after() {
   &:after {
     content: "";
     display: table;
     clear: both;
   }
 }
+@mixin clearfix() {
+  @include clearfix-before;
+  @include clearfix-after;
+}
+
+
+//----------Helpers
+
+/* Responsive aspect-ratio-preserving container
+ *  - uncle-dave is the wrapper which sets the aspect ratio
+ *  - daves-nephew is the element containing the content
+ */
+@mixin uncle-dave($aspect-x:1, $aspect-y:1) {
+  height: 0;
+  width: 100%;
+  padding-bottom: percentage($aspect-y/$aspect-x);
+  position: relative;
+  overflow: hidden;
+}
+@mixin daves-nephew() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 
 //----------Breakpoints
-@mixin breakpoint($point) {
-  @if $point == forrest {
-    @media (max-width: 68.75em) { @content; }
-  }
-  @else if $point == tree {
-    @media (max-width: 53em) { @content; }
-  }
-  @else if $point == sapling {
-    @media (max-width: 40em) { @content; }
-  }
-  @else if $point == seedling {
-    @media (max-width: 38.75em) { @content; }
-  }
+
+@mixin bp($point) {
+  @media screen and (min-width: $point) { @content; }
 }
+
