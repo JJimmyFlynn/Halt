@@ -21,3 +21,12 @@ function imageSizeFromAcf($imageId, $imageSize = '') {
 
   return $imageUrl;
 }
+
+/**
+ * Include components with variable scoping
+ * @param string $component_name The base filename of the component in the components directory
+ * @param array  $options        Array of options to pass to component. Each component should clearly define acceptable options.
+ */
+function get_component( $component_name, $options = array() ) {
+  include(locate_template('components/'.$component_name.'.php'));
+}
