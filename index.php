@@ -1,14 +1,7 @@
-<?php get_template_part('templates/page', 'header'); ?>
 
-<?php if (!have_posts()) : ?>
-  <div class="alert alert-warning">
-    <?php _e('Sorry, no results were found.', 'halt'); ?>
-  </div>
-  <?php get_search_form(); ?>
-<?php endif; ?>
+<?php
 
-<?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
-<?php endwhile; ?>
-
-<?php the_posts_navigation(); ?>
+// Make sure WP is looking for the theme in '/views'
+if (defined('ABSPATH')) {
+    update_option('template', get_option('template') . '/views');
+}

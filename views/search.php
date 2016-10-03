@@ -4,7 +4,7 @@
  * Search Results Page
  */
 
-get_template_part('templates/page', 'header'); 
+get_template_part('views/partials/page', 'header'); 
 
 ?>
 
@@ -19,7 +19,7 @@ get_template_part('templates/page', 'header');
 <?php while (have_posts()) : the_post(); ?>
   <?php 
     // Results Found
-    get_template_part('templates/content', 'search'); 
+    get_template_part('views/partials/content', 'search'); 
   ?>
 <?php endwhile; ?>
 

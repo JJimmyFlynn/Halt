@@ -7,11 +7,11 @@ use Halt\Wrapper;
 
 <!doctype html>
 <html <?php language_attributes(); ?>>
-  <?php get_template_part('templates/head'); ?>
+  <?php get_template_part('views/partials/head'); ?>
   <body <?php body_class(); ?>>
     <?php
       do_action('get_header');
-      get_template_part('templates/header');
+      get_template_part('views/partials/header');
     ?>
     <div class="container" role="document">
       <main>
@@ -24,7 +24,7 @@ use Halt\Wrapper;
       <?php endif; ?>
       <?php
         do_action('get_footer');
-        get_template_part('templates/footer');
+        get_template_part('views/partials/footer');
         wp_footer();
       ?>
     </div>
