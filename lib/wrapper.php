@@ -14,7 +14,7 @@ function template_path() {
 }
 
 function sidebar_path() {
-  return new HaltWrapping('templates/sidebar.php');
+  return new HaltWrapping('views/partials/sidebar.php');
 }
 
 class HaltWrapping {
