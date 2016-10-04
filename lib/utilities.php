@@ -36,7 +36,7 @@ function get_component( $component_name, $options = array() ) {
  * @return String
  */
 function halt_assets() {
-  return get_template_directory_uri() . '/dist'
+  return get_template_directory_uri() . '/dist';
 }
 
 /**
