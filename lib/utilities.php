@@ -30,3 +30,19 @@ function imageSizeFromAcf($imageId, $imageSize = '') {
 function get_component( $component_name, $options = array() ) {
   include(locate_template('components/'.$component_name.'.php'));
 }
+
+/**
+ * Returns the path to theme/dist
+ * @return String
+ */
+function halt_assets() {
+  return get_template_directory_uri() . '/dist'
+}
+
+/**
+ * Returns the path to theme/dist/images
+ * @return String
+ */
+function halt_images() {
+  return get_template_directory_uri() . '/dist/images';
+}
