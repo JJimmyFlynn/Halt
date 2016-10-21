@@ -58,3 +58,31 @@ function halt_cleanup_dashboard() {
   remove_meta_box('dashboard_quick_press', 'dashboard', 'side');  // Quick Press
 }
 add_action('wp_dashboard_setup', __NAMESPACE__. '\\halt_cleanup_dashboard');
+
+/**
+ * Hide elements on homepage edit screen
+ * Use options page to manage, unless otherwise necessary
+ */
+add_action('admin_init', __NAMESPACE__ . '\\hide_editor');
+function hide_editor() {
+  // Reutrn if not on a post edit page
+  global $pagenow;
+  if ($pagenow != 'post.php') {
+    return;
+  }
+  // Get the Post ID
+  $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];
+
+  // Return if no Post ID is set
+  if (!isset($post_id)) {
+    return;
+  }
+
+  // We have a Post ID, carry on...
+  $homepage_name = get_the_title($post_id);
+  if ($homepage_name == 'Homepage') {
+    remove_post_type_support('page', 'editor');
+    remove_post_type_support('page', 'thumbnail');
+    remove_post_type_support('page', 'page-attributes');
+  }
+}
