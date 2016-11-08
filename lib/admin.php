@@ -31,7 +31,7 @@ function halt_custom_login() { ?>
         }
     </style>
 <?php }
-add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\halt_custom_login');
+add_action( 'login_head', __NAMESPACE__ . '\\halt_custom_login');
 
 /**
  * Change logo title and href
