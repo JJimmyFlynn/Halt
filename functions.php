@@ -29,7 +29,6 @@ $halt_includes = [
   'lib/setup.php',           // Theme setup
   'lib/titles.php',          // Page titles
   'lib/wrapper.php',         // Theme wrapper class
-  'lib/customizer.php',      // Theme customizer
   'lib/bem_nav_walker.php',  // BEM Nav Walker
   'lib/utilities.php'
 ];
