@@ -39,6 +39,10 @@ class JsonManifest {
   }
 }
 
+/**
+ * Determine asset path for enqueuing
+ * @return String     Path to assets
+ */
 function asset_path($filename) {
   $dist_path = get_template_directory_uri() . '/dist/';
   $directory = dirname($filename) . '/';
