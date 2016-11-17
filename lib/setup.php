@@ -40,22 +40,26 @@ function halt_setup() {
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\halt_setup');
 
-
 /**
- * Fix location of ACF local JSON.
- *
- * Since Halt does some surgery on the WordPress template locations, ACF looks in
- * the wrong location for the acf-json directory. We will fix this by manually
- * hooking into that functionality and attempting to save in the right spot.
- *
- * @param  string  $path
- * @return string
+ * Add allowed <body> classes
  */
-add_filter('acf/settings/save_json', function ($path) {
-    $targetDir = get_template_directory().'/acf-json';
-    return (file_exists($targetDir) && is_dir($targetDir)) ? $targetDir : $path;
-});
+function body_class($classes) {
 
+  $allowed_classes = [
+    'home',
+    'single',
+  ];
+
+  $classes = array_intersect($classes, $allowed_classes);
+
+  // Add class if sidebar is active
+  if (display_sidebar()) {
+    $classes[] = 'has-sidebar';
+  }
+
+  return $classes;
+}
+add_filter('body_class', __NAMESPACE__ . '\\body_class');
 
 /**
  * Determine which pages should NOT display the sidebar
@@ -73,3 +77,18 @@ function display_sidebar() {
 
   return apply_filters('halt/display_sidebar', $display);
 }
+
+/**
+ * Fix location of ACF local JSON.
+ *
+ * Since Halt does some surgery on the WordPress template locations, ACF looks in
+ * the wrong location for the acf-json directory. We will fix this by manually
+ * hooking into that functionality and attempting to save in the right spot.
+ *
+ * @param  string  $path
+ * @return string
+ */
+add_filter('acf/settings/save_json', function ($path) {
+    $targetDir = get_template_directory().'/acf-json';
+    return (file_exists($targetDir) && is_dir($targetDir)) ? $targetDir : $path;
+});
