@@ -14,6 +14,22 @@ function halt_setup() {
   add_theme_support('soil-nice-search');
   add_theme_support('soil-relative-urls');
 
+  // Enable features from Halt Extras plugin
+  // 
+  // Remove admin menu items
+  add_theme_support('halt-menu', [
+    'edit-comments.php',
+  ]);
+  // Remove dashboard metaboxes
+  add_theme_support('halt-dashboard', [
+    'dashboard_right_now',
+    'dashboard_primary',
+    'dashboard_secondary',
+    'dashboard_quick_press',
+  ]);
+  // Clean up homepage edit page
+  add_theme_support('halt-clean-homepage');
+
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
   add_theme_support('title-tag');
@@ -37,6 +53,7 @@ function halt_setup() {
   // Enable HTML5 markup support
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
   add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
+
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\halt_setup');
 
