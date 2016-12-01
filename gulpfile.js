@@ -129,7 +129,7 @@ var jsTasks = function(filename) {
     })
     .pipe(concat, filename)
     .pipe(babel, {
-      presets: ['es2015']  
+      presets: ['latest']  
     })
     .pipe(uglify, {
       compress: {
