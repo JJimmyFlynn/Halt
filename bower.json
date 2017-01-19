@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "neat": "^1.7.4"
   },
   "overrides": {}
 }
