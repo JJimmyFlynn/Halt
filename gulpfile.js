@@ -87,7 +87,7 @@ elixir((mix) => {
    * BrowserSync
    */
   mix.browserSync({
-    proxy: browserSyncProxy // Add local dev url here
+    proxy: browserSyncProxy
   });
 
 });
