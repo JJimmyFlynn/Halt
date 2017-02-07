@@ -10,7 +10,7 @@ It is a modified version of [Sage](https://roots.io/sage) by the Roots team
 | Node.js 0.12.x  | `node -v`    | [nodejs.org](http://nodejs.org/) |
 | gulp >= 3.9.1   | `gulp -v`    | `npm install -g gulp` |
 | Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
-| Laravel Elixir  |              |                        |
+| Laravel Elixir >= 6.0.0-15  |              |                        |
 
 ## Theme installation
 
@@ -39,7 +39,7 @@ You now have all the necessary dependencies to run the build process.
 
 * `gulp` — Compile and optimize the files in your assets directory
 * `gulp watch` — Compile assets when file changes are made
-* `gulp --production` — Compile and minimize assets for production (no source maps).
+* `gulp --production` — Compile and minimize assets for production (no source maps)
 
 ### Using BrowserSync
 
