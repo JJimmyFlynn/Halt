@@ -87,7 +87,14 @@ elixir((mix) => {
    * BrowserSync
    */
   mix.browserSync({
-    proxy: browserSyncProxy
+    proxy: browserSyncProxy,
+    // Array of files that trigger injection/reload
+    files: [
+      'dist/**/*.css',
+      'dist/**/*.js',
+      'views/**/*.php',
+      'lib/**/*.php'
+    ]
   });
 
 });
