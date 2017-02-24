@@ -73,7 +73,10 @@ elixir((mix) => {
       }
     },
     svg: {
-      xmlDeclaration: false
+      xmlDeclaration: false,
+      rootAttributes: {
+        'style': 'display: none;'
+      }
     }  
   });
 
