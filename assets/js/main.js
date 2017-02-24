@@ -1,3 +1,6 @@
+// External Dependencies
+import $ from 'jquery';
+
 // Dependencies
 import Router from './util/router';
 import common from './routes/Common';
@@ -15,4 +18,4 @@ const routes = {
 };
 
 // Load all the things
-jQuery(document).ready(() => new Router(routes).loadEvents());
+$(document).ready(() => new Router(routes).loadEvents());

@@ -6,7 +6,6 @@
   ],
   "license": "MIT",
   "private": true,
-  "dependencies": {
-  },
+  "dependencies": {},
   "overrides": {}
 }
