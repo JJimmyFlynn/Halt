@@ -31,6 +31,7 @@ const elixir = require('laravel-elixir');
  */
 require('laravel-elixir-imagemin');
 require('laravel-elixir-svg-symbols');
+require('elixir-busting');
 
 /**
  * Set Project Paths
@@ -56,6 +57,14 @@ elixir((mix) => {
    * JS Build Task
    */
   mix.webpack('main.js');
+
+  /**
+   * Asset Versioning Task
+   */
+  mix.busting([
+    elixir.config.publicPath + '/css/main.css',
+    elixir.config.publicPath + '/js/main.js'
+  ]);
 
   /**
    * Images Task
