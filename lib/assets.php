@@ -34,6 +34,4 @@ function elixir($file) {
   if (isset($manifest[$file])) {
       return halt_assets() . '/' . $manifest[$file];
   }
-
-  throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
 }
