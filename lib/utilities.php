@@ -55,27 +55,47 @@ function halt_images() {
  *   ends with a complete sentence.
  */
 
-    function halt_smart_excerpt($length) { // Max excerpt length. Length is set in characters
-        global $post;
-        $text = $post->post_excerpt;
-        if ( '' == $text ) {
-            $text = get_the_content('');
-            $text = apply_filters('the_content', $text);
-            $text = str_replace(']]>', ']]>', $text);
-        }
-        $text = strip_shortcodes($text); // optional, recommended
-        $text = strip_tags($text); // use ' $text = strip_tags($text,'<p><a>'); ' if you want to keep some tags
-        if ( empty($length) ) {
-            $length = 300;
-        }
-        $text = substr($text,0,$length);
-        $excerpt = reverse_strrchr($text, '.', 1);
-        if( $excerpt ) {
-            echo apply_filters('the_excerpt',$excerpt);
-        } else {
-            echo apply_filters('the_excerpt',$text);
-        }
-    }
-    function reverse_strrchr($haystack, $needle, $trail) {
-        return strrpos($haystack, $needle) ? substr($haystack, 0, strrpos($haystack, $needle) + $trail) : false;
-    }
+function halt_smart_excerpt($length) { // Max excerpt length. Length is set in characters
+  global $post;
+  $text = $post->post_excerpt;
+  if ( '' == $text ) {
+    $text = get_the_content('');
+    $text = apply_filters('the_content', $text);
+    $text = str_replace(']]>', ']]>', $text);
+  }
+  $text = strip_shortcodes($text); // optional, recommended
+  $text = strip_tags($text); // use ' $text = strip_tags($text,'<p><a>'); ' if you want to keep some tags
+  if ( empty($length) ) {
+    $length = 300;
+  }
+  $text = substr($text,0,$length);
+  $excerpt = reverse_strrchr($text, '.', 1);
+  if( $excerpt ) {
+    echo apply_filters('the_excerpt',$excerpt);
+  } else {
+    echo apply_filters('the_excerpt',$text);
+  }
+}
+function reverse_strrchr($haystack, $needle, $trail) {
+  return strrpos($haystack, $needle) ? substr($haystack, 0, strrpos($haystack, $needle) + $trail) : false;
+}
+
+/**
+ * Prints human friendly dates (ie. "2 days ago") if the post is less than
+ * one week old. Otherwise, it displays a standard datestamp.
+ * 
+ * @param  string $timestamp_fallback The PHP date format to fall back to if post is older than 1 weeek
+ */
+function human_friendly_date($timestamp_fallback = 'F j, Y') {
+  global $post;
+  $today = date("r");
+  $postdate = get_the_time('r');
+  $difference = round((strtotime($today) - strtotime($postdate))/(24*60*60),0);
+  if ($difference >= 7) {
+    $humandate = the_time($timestamp_fallback);
+  } else {
+    $humandate = human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago';
+  }
+  $humandate = str_replace('mins', 'minutes', $humandate);
+  echo $humandate;
+}
