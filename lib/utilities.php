@@ -46,3 +46,36 @@ function halt_assets() {
 function halt_images() {
   return get_template_directory_uri() . '/dist/images';
 }
+
+/**
+ *   SMART EXCERPT
+ *   http://www.distractedbysquirrels.com/blog/wordpress-improved-dynamic-excerpt
+ *
+ *   Returns an excerpt which is not longer than the given length and always
+ *   ends with a complete sentence.
+ */
+
+    function halt_smart_excerpt($length) { // Max excerpt length. Length is set in characters
+        global $post;
+        $text = $post->post_excerpt;
+        if ( '' == $text ) {
+            $text = get_the_content('');
+            $text = apply_filters('the_content', $text);
+            $text = str_replace(']]>', ']]>', $text);
+        }
+        $text = strip_shortcodes($text); // optional, recommended
+        $text = strip_tags($text); // use ' $text = strip_tags($text,'<p><a>'); ' if you want to keep some tags
+        if ( empty($length) ) {
+            $length = 300;
+        }
+        $text = substr($text,0,$length);
+        $excerpt = reverse_strrchr($text, '.', 1);
+        if( $excerpt ) {
+            echo apply_filters('the_excerpt',$excerpt);
+        } else {
+            echo apply_filters('the_excerpt',$text);
+        }
+    }
+    function reverse_strrchr($haystack, $needle, $trail) {
+        return strrpos($haystack, $needle) ? substr($haystack, 0, strrpos($haystack, $needle) + $trail) : false;
+    }
