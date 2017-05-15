@@ -27,17 +27,18 @@ Available Commands:
 const elixir = require('laravel-elixir');
 
 /**
+ * Set Project Paths
+ */
+elixir.config.assetsPath = './assets';
+elixir.config.publicPath = './dist';
+
+
+/**
  * Plugins
  */
 require('laravel-elixir-imagemin');
 require('laravel-elixir-svg-symbols');
 require('elixir-busting');
-
-/**
- * Set Project Paths
- */
-elixir.config.assetsPath = './assets';
-elixir.config.publicPath = './dist';
 
 /**
  * Set BrowserSync Proxy URL
