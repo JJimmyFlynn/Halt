@@ -9,7 +9,7 @@ Additional Information: https://github.com/laravel/elixir
 Available Commands:
 
 - gulp
--- Runs all tasks 
+-- Runs all tasks
 
 - gulp --production
 -- Runs all tasks and minifys JS and CSS
@@ -42,7 +42,7 @@ require('elixir-busting');
 
 /**
  * Set BrowserSync Proxy URL
- * 
+ *
  * EDIT THIS
  */
 const browserSyncProxy = 'halt.dev'
@@ -87,7 +87,7 @@ elixir((mix) => {
       rootAttributes: {
         'style': 'display: none;'
       }
-    }  
+    }
   });
 
   /**
@@ -105,8 +105,9 @@ elixir((mix) => {
     files: [
       'dist/**/*.css',
       'dist/**/*.js',
-      'views/**/*.php',
-      'lib/**/*.php'
+      'views/**/*.twig',
+      'lib/**/*.php',
+      '*.php'
     ]
   });
 

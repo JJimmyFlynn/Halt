@@ -1,0 +1,19 @@
+{% extends 'layouts/base.twig' %}
+
+{% from 'components/colored-text.twig' import colored_text %}
+
+{% block header %}
+  <h1>I am header from index</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>THis is sindex {{ colored_text('mini','blue') }}</h2>
+
+  <ol>
+  {% for post in posts %}
+    <li>{{ post.title }} - <small>{{ post.date|ago(2) }}</small></li>
+    <img src="{{ 'images/icon.png'|dist }}">
+  {% endfor %}
+  </ol>
+
+{% endblock %}

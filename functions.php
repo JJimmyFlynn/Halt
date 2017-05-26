@@ -1,17 +1,22 @@
 <?php
 
+// COMPOSER
+require_once(__DIR__ . '/vendor/autoload.php');
+
 // These hooks inform WP that Halt's required theme file are located
 // in the 'views' directory (excepting style.css, functions.php, and index.php)
 // index.php contains self-correcting code in case the template option is reset
+/* // FIX THIS LATER MAYBE
 add_filter('template', function ($stylesheet) {
-    return dirname($stylesheet);
+  return dirname($stylesheet);
 });
 add_action('after_switch_theme', function () {
-    $stylesheet = get_option('template');
-    if (basename($stylesheet) !== 'views') {
-        update_option('template', $stylesheet . '/views');
-    }
+  $stylesheet = get_option('template');
+  if (basename($stylesheet) !== 'views') {
+    update_option('template', $stylesheet . '/views');
+  }
 });
+ */
 
 /**
  * Halt includes
@@ -25,11 +30,8 @@ add_action('after_switch_theme', function () {
 $halt_includes = [
   'lib/admin.php',           // Admin Customizations
   'lib/assets.php',          // Scripts and stylesheets
-  'lib/extras.php',          // Custom functions
   'lib/setup.php',           // Theme setup
-  'lib/wrapper.php',         // Theme wrapper class
-  'lib/bem_nav_walker.php',  // BEM Nav Walker
-  'lib/utilities.php'
+  'lib/filters.php',         // register Twig filters to use in templates
 ];
 
 foreach ($halt_includes as $file) {

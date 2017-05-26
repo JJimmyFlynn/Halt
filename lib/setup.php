@@ -3,6 +3,7 @@
 namespace Halt\Setup;
 
 use Halt\Assets;
+use Timber;
 
 /**
  * Theme setup
@@ -58,6 +59,25 @@ function halt_setup() {
 add_action('after_setup_theme', __NAMESPACE__ . '\\halt_setup');
 
 /**
+ * Timber setup
+ */
+function timber_setup() {
+  $timber = new \Timber\Timber(); // init Timber
+}
+add_action('init', __NAMESPACE__ . '\\timber_setup');
+
+/**
+ * Twig setup
+ */
+function twig_setup($twig) {
+  $twig->addExtension(new \Twig_Extension_StringLoader());
+  return $twig;
+}
+add_filter('get_twig', __NAMESPACE__.'\\twig_setup');
+
+
+
+/**
  * Add allowed <body> classes
  */
 function body_class($classes) {
@@ -107,3 +127,6 @@ add_filter('acf/settings/save_json', function ($path) {
     $targetDir = get_template_directory().'/acf-json';
     return (file_exists($targetDir) && is_dir($targetDir)) ? $targetDir : $path;
 });
+
+
+

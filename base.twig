@@ -1,0 +1,30 @@
+<html>
+
+  <head>
+    <title>HALT TIMBER EDITION</title>
+    {% block head %}
+    {% endblock %}
+  </head>
+
+  <body class="{{body_class}}" data-source="base.twig">
+
+    <header class="header" >
+      {% block header %}
+        <h1>I am header from base</h1>
+      {% endblock %}
+    </header>
+
+
+    <section id="content" role="main" class="content-wrapper">
+      {% block content %}
+        <p>I am content from base.</p>
+      {% endblock %}
+    </section>
+
+    <footer id="footer">
+      {% include 'footer.twig' %}
+    </footer>
+
+    {{ function('wp_footer') }}
+  </body>
+</html>
