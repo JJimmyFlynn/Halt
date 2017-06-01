@@ -1,19 +1,58 @@
 {% extends 'layouts/base.twig' %}
 
-{% from 'components/colored-text.twig' import colored_text %}
+{% block head %}
+  {% include 'partials/head.twig' %}
 
-{% block header %}
-  <h1>I am header from index</h1>
+  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #1B2B34;
+      font-family: 'Oxygen', sans-serif;
+      color: #EC6153;
+      margin: 0;
+      padding-bottom: 4rem;
+      text-align: center;
+    }
+    a {
+      color: #EC6153;
+    }
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 4rem;
+    }
+    ul {
+      display: inline-block;
+      text-align: left;
+    }
+    p {
+      font-size: 2rem;
+    }
+    .site-header {
+      padding: 1rem;
+    }
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      background-color: #1B2B34;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
-  <h2>This is index {{ colored_text('mini','blue') }}</h2>
+  <div class="container">
+    <p>Halt is installed and ready. Make sure you run 'yarn install' and get cracking.</p>
 
-  <ol>
-  {% for post in posts %}
-    <li>{{ post.title }} - <small>{{ post.date|ago(2) }}</small></li>
-    <img src="{{ 'images/icon.png'|dist }}">
-  {% endfor %}
-  </ol>
-
+    <ul>
+      {% for post in posts %}
+      <li><a href="{{ post.link }}">{{ post.title }}</a> - <small>{{ post.date|ago }}</small></li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}

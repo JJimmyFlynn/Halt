@@ -28,7 +28,7 @@ function elixir($file) {
   $manifest = null;
 
   if (is_null($manifest)) {
-      $manifest = json_decode(file_get_contents(get_template_directory() . '/dist/rev-manifest.json'), true);
+      $manifest = json_decode(file_get_contents(get_stylesheet_directory() . '/dist/rev-manifest.json'), true);
   }
 
   if (isset($manifest[$file])) {
