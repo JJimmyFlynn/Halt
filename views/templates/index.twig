@@ -49,6 +49,8 @@
   <div class="container">
     <p>Halt is installed and ready. Make sure you run 'yarn install' and get cracking.</p>
 
+    <img src="{{ 'sample.gif'|halt_img }}" alt="sample image">
+
     <ul>
       {% for post in posts %}
       <li><a href="{{ post.link }}">{{ post.title }}</a> - <small>{{ post.date|ago }}</small></li>

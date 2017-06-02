@@ -32,7 +32,6 @@ $halt_includes = [
   'lib/assets.php',          // Scripts and stylesheets
   'lib/setup.php',           // Theme setup
   'lib/filters.php',         // register Twig filters to use in templates
-  'lib/utilities.php',       // utility functions
 ];
 
 foreach ($halt_includes as $file) {

@@ -18,18 +18,26 @@ add_filter('get_twig', __NAMESPACE__.'\\add_filters');
 // Find a better way to do this... maybe with WP filters?
 function gather_filters() {
   return [
-    'dist',
-    'img',
+    'halt_assets',
+    'halt_img',
     'ago',
   ];
 }
 
-function dist($path) {
-  return trailingslashit(get_template_directory_uri()).'dist/'.$url;
+/**
+ * Returns the path to theme/dist
+ * @return String
+ */
+function halt_assets($path) {
+  return trailingslashit(get_stylesheet_directory_uri()).'dist/'.$path;
 }
 
-function img($path) {
-  return dist('images/'.$path);
+/**
+ * Returns the path to theme/dist/images
+ * @return String
+ */
+function halt_img($path) {
+  return halt_assets('images/'.$path);
 }
 
 /**
