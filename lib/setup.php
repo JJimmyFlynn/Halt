@@ -74,7 +74,10 @@ function body_class($classes) {
 }
 add_filter('body_class', __NAMESPACE__ . '\\body_class');
 
-
-
-
-
+/**
+ * Removes basic WP custom fields box
+ * 
+ * Since Halt uses ACF the rendering of the custom fields box is extra
+ * overhead that can be removed to improve admin area performance
+ */
+add_filter('acf/settings/remove_wp_meta_box', '__return_true');
