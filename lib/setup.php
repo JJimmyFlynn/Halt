@@ -70,44 +70,11 @@ function body_class($classes) {
 
   $classes = array_intersect($classes, $allowed_classes);
 
-  // Add class if sidebar is active
-  if (display_sidebar()) {
-    $classes[] = 'has-sidebar';
-  }
-
   return $classes;
 }
 add_filter('body_class', __NAMESPACE__ . '\\body_class');
 
-/**
- * Determine which pages should display the sidebar
- */
-function display_sidebar() {
-  static $display;
 
-  isset($display) || $display = in_array(true, [
-    // The sidebar will be displayed if ANY of the following return true.
-    // @link https://codex.wordpress.org/Conditional_Tags
-    is_page_template('template-custom.php'),
-  ]);
-
-  return apply_filters('halt/display_sidebar', $display);
-}
-
-/**
- * Fix location of ACF local JSON.
- *
- * Since Halt does some surgery on the WordPress template locations, ACF looks in
- * the wrong location for the acf-json directory. We will fix this by manually
- * hooking into that functionality and attempting to save in the right spot.
- *
- * @param  string  $path
- * @return string
- */
-add_filter('acf/settings/save_json', function ($path) {
-    $targetDir = get_template_directory().'/acf-json';
-    return (file_exists($targetDir) && is_dir($targetDir)) ? $targetDir : $path;
-});
 
 
 
