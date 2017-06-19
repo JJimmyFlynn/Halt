@@ -1,22 +1,52 @@
 <?php
 
-// COMPOSER
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// These hooks inform WP that Halt's required theme file are located
-// in the 'views' directory (excepting style.css, functions.php, and index.php)
-// index.php contains self-correcting code in case the template option is reset
-/* // FIX THIS LATER MAYBE
-add_filter('template', function ($stylesheet) {
-  return dirname($stylesheet);
-});
-add_action('after_switch_theme', function () {
-  $stylesheet = get_option('template');
-  if (basename($stylesheet) !== 'views') {
-    update_option('template', $stylesheet . '/views');
-  }
-});
+/**
+ * Helper function for prettying up errors
+ * @param string $message
+ * @param string $subtitle
+ * @param string $title
  */
+function halt_error ($message, $subtitle = '', $title = '') {
+    $title = $title ?: 'Halt &rsaquo; Error';
+    $message = "<h1>{$title}<br><small>{$subtitle}</small></h1><p>{$message}</p>";
+    wp_die($message, $title);
+};
+
+/**
+ * Ensure compatible version of PHP is being used
+ */
+if( version_compare( '5.6.4', phpversion(), '>=' ) ) {
+  halt_error( 'You must be using PHP 5.6.4 or greater.', 'Invalid PHP version');
+}
+
+/**
+ * Ensure compatible version of WordPress is being used
+ */
+if( version_compare( '4.7.0', get_bloginfo( 'version' ), '>=' ) ) {
+  halt_error( 'You must be using WordPress 4.7.0 or greater.', 'Invalid WordPress Version' );
+}
+
+/**
+ * Ensure Composer Dependencies are loaded
+ */
+if( !file_exists( $composer = __DIR__ . '/vendor/autoload.php' ) ) {
+  halt_error( 
+    'You must run <code>composer install</code> from the theme directory.', 
+    'Autoloader not found'
+  );
+}
+// It exists, wrangle it!
+require_once( $composer );
+
+/**
+ * Ensure node dependencies have been loaded
+ */
+if( !file_exists( __DIR__ . '/node_modules' ) ) {
+  halt_error( 
+    'Run <code>yarn install</code> or <code>npm install</code> to install theme dependencies.',
+    'Theme dependencies not installed'
+  );
+}
 
 /**
  * Halt includes
