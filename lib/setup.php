@@ -3,7 +3,6 @@
 namespace Halt\Setup;
 
 use Halt\Assets;
-use Timber;
 
 /**
  * Theme setup
