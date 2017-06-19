@@ -59,25 +59,6 @@ function halt_setup() {
 add_action('after_setup_theme', __NAMESPACE__ . '\\halt_setup');
 
 /**
- * Timber setup
- */
-function timber_setup() {
-  $timber = new \Timber\Timber(); // init Timber
-}
-add_action('init', __NAMESPACE__ . '\\timber_setup');
-
-/**
- * Twig setup
- */
-function twig_setup($twig) {
-  $twig->addExtension(new \Twig_Extension_StringLoader());
-  return $twig;
-}
-add_filter('get_twig', __NAMESPACE__.'\\twig_setup');
-
-
-
-/**
  * Add allowed <body> classes
  */
 function body_class($classes) {
