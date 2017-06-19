@@ -51,16 +51,11 @@
 
 {% block content %}
   <div class="container">
-    <p>Halt is installed and ready. Make sure you run 'yarn install' and get cracking.</p>
+    <p>Halt is installed and ready.</p>
 
     <div>
       <img src="{{ 'sample.gif'|halt_img }}" alt="sample image">
     </div>
-
-    <ul>
-      {% for post in posts %}
-      <li><a href="{{ post.link }}">{{ post.title }}</a> - <small>{{ post.date|ago }}</small></li>
-      {% endfor %}
-    </ul>
+    
   </div>
 {% endblock %}
