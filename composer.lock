@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2193b9d118df7c861d1b5b624d79240",
+    "content-hash": "69054432594c2e53f8312a1c251f0709",
     "packages": [
         {
             "name": "altorouter/altorouter",

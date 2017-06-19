@@ -62,7 +62,7 @@ $halt_includes = [
   'lib/assets.php',          // Scripts and stylesheets
   'lib/setup.php',           // Theme setup
   'lib/filters.php',         // register Twig filters to use in templates
-  'lib/timber.php'
+  'lib/timber.php'           // Timber setup and additions
 ];
 
 foreach ($halt_includes as $file) {
