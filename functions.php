@@ -30,8 +30,8 @@ if( version_compare( '4.7.0', get_bloginfo( 'version' ), '>=' ) ) {
  * Ensure Composer Dependencies are loaded
  */
 if( !file_exists( $composer = __DIR__ . '/vendor/autoload.php' ) ) {
-  halt_error( 
-    'You must run <code>composer install</code> from the theme directory.', 
+  halt_error(
+    'You must run <code>composer install</code> from the theme directory.',
     'Autoloader not found'
   );
 }
@@ -41,11 +41,13 @@ require_once( $composer );
 /**
  * Ensure node dependencies have been loaded
  */
-if( !file_exists( __DIR__ . '/node_modules' ) ) {
-  halt_error( 
-    'Run <code>yarn install</code> or <code>npm install</code> to install theme dependencies.',
-    'Theme dependencies not installed'
-  );
+if ( isset($_ENV['PANTHEON_ENVIRONMENT']) && in_array($_ENV['PANTHEON_ENVIRONMENT'], array('kalabox')) ) {
+  if( !file_exists( __DIR__ . '/node_modules' ) ) {
+    halt_error(
+      'Run <code>yarn install</code> or <code>npm install</code> to install theme dependencies.',
+      'Theme dependencies not installed'
+    );
+  }
 }
 
 /**
