@@ -2,7 +2,7 @@
 
 namespace Halt\Assets;
 
-use Halt\Filters;
+use Halt\Utils;
 
 /**
  * Enqueue theme assets
@@ -34,6 +34,6 @@ function elixir($file) {
   }
 
   if (isset($manifest[$file])) {
-      return Filters\halt_assets($manifest[$file]);
+      return Utils\assets($manifest[$file]);
   }
 }
