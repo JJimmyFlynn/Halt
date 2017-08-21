@@ -18,7 +18,7 @@ function add_filters($twig) {
    */
   $twig->addFilter(new \Twig_SimpleFilter('halt_assets',
     function($path) {
-      return Theme\assets($path);
+      return Utils\assets($path);
     }
   ));
 
@@ -28,7 +28,7 @@ function add_filters($twig) {
    */
   $twig->addFilter(new \Twig_SimpleFilter('halt_images',
     function($path) {
-      return Theme\assets('images/'.$path);
+      return Utils\assets('images/'.$path);
     }
   ));
 
@@ -36,13 +36,13 @@ function add_filters($twig) {
    * Returns human friendly dates (ie. "2 days ago") if the post is less than
    * one week old. Otherwise, it displays a standard datestamp.
    *
-   * See Theme\ago()
+   * See Utils\ago()
    *
    * @return String
    */
   $twig->addFilter(new \Twig_SimpleFilter('ago',
     function($the_date, $limit=7, $timestamp_fallback='F j, Y') {
-      return Theme\ago($the_date, $limit, $timestamp_fallback);
+      return Utils\ago($the_date, $limit, $timestamp_fallback);
     }
   ));
 
@@ -52,7 +52,7 @@ function add_filters($twig) {
    */
   $twig->addFilter(new \Twig_SimpleFilter('array_halve',
     function($array, $side) {
-      return Theme\array_halve($array, $side);
+      return Utils\array_halve($array, $side);
     }
   ));
 
