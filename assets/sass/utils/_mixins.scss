@@ -63,6 +63,167 @@
   width: auto;
 }
 
+/* List helpers
+*/
+@mixin strip-list() {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* keystroke savers */
+@mixin nuke() {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin bg-img() {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@mixin wxh($width:1em, $height:$width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin v($prop, $top, $bottom:$top) {
+  #{$prop}-top: $top;
+  #{$prop}-bottom: $bottom;
+}
+
+@mixin h($prop, $left, $right:$left) {
+  #{$prop}-left: $left;
+  #{$prop}-right: $right;
+}
+
+/* Text helpers */
+
+@mixin screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+  position: absolute !important;
+  white-space: nowrap;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+@mixin truncate($truncation-boundary, $vertical: false) {
+  @if $vertical {
+    max-height: $truncation-boundary;
+  } @else {
+    max-width: $truncation-boundary;
+  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i}, .h#{$i} {
+      @content
+    }
+  }
+}
+
+/* graphics */
+
+@mixin gpu($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
+}
+
+
+
+//----------Form Fields / Groupings
+
+@mixin placeholder() {
+  ::placeholder {
+    @content;
+  }
+  :placeholder {
+    @content;
+  }
+  /* Chrome/Opera/Safari */
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  /* Firefox 19+ */
+  ::-moz-placeholder {
+    @content;
+  }
+  /* IE 10+ */
+  :-ms-input-placeholder {
+    @content;
+  }
+  /* Firefox 18- */
+  :-moz-placeholder {
+    @content;
+  }
+}
+
+@mixin text-inputs() {
+  input[type=email],
+  input[type=number],
+  input[type=password],
+  input[type=search],
+  input[type=tel],
+  input[type=text],
+  input[type=url],
+  textarea
+  {
+    @content;
+  }
+}
+
+@mixin block-inputs() {
+  @include text-inputs {
+    @content;
+  }
+  select {
+    @content;
+  }
+}
+
+@mixin bool-inputs() {
+  input[type=checkbox],
+  input[type=radio] {
+    @content;
+  }
+}
+
+@mixin form-controls() {
+  @include block-inputs() {
+    @content;
+  }
+  @include bool-inputs() {
+    @content;
+  }
+}
+
+@mixin form-buttons() {
+  input[type=button],
+  input[type=submit],
+  button[type=submit]
+  {
+    @content;
+  }
+}
+
+@mixin form-elements() {
+  @include form-controls() {
+    @content;
+  }
+  @include form-buttons() {
+    @content;
+  }
+}
+
+
 
 //----------Breakpoints
 
