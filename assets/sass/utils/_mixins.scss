@@ -11,20 +11,20 @@
 @mixin clearfix-before() {
   &:before {
     content: "";
-    display: table;
-    clear: both;
-  }
-}
-@mixin clearfix-after() {
-  &:after {
-    content: "";
-    display: table;
+    display: block;
     clear: both;
   }
 }
 @mixin clearfix() {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+@mixin clearfix-both() {
   @include clearfix-before;
-  @include clearfix-after;
+  @include clearfix;
 }
 
 
