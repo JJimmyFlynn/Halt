@@ -2,19 +2,13 @@
 // Author: Catchfire Creative
 // Table of Contents:
 // I.   Clearfix
-// II.  Helpers
-// III. Breakpoints
+// II.  Breakpoints
+// III. Helpers
 
 
-//----------Trusty Clearfix
-
-@mixin clearfix-before() {
-  &:before {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
+/* ==========================================================================
+  Trusty Clearfix
+========================================================================== */
 @mixin clearfix() {
   &:after {
     content: "";
@@ -22,84 +16,27 @@
     clear: both;
   }
 }
-@mixin clearfix-both() {
-  @include clearfix-before;
-  @include clearfix;
+
+/* ==========================================================================
+  Breakpoints
+========================================================================== */
+@mixin breakpoint($point) {
+  @media screen and (min-width: $point) { @content; }
 }
 
 
-//----------Helpers
+/* ==========================================================================
+  Helper
+========================================================================== */
 
-/* Responsive aspect-ratio-preserving container
- *  - uncle-dave is the wrapper which sets the aspect ratio
- *  - daves-nephew is the element containing the content
- */
-@mixin uncle-dave($aspect-x:1, $aspect-y:1, $width-factor:1) {
-  height: 0;
-  width: 100% * $width-factor;
-  padding-bottom: percentage($aspect-y*$width-factor/$aspect-x);
-  position: relative;
-  overflow: hidden;
-}
-@mixin daves-nephew() {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-// reset
-@mixin murder-uncle-dave() {
-  height: auto;
-  width: auto;
-  padding-bottom: 0;
-  position: static;
-  overflow: visible;
-}
-// reset
-@mixin murder-daves-nephew() {
-  position: static;
-  height: auto;
-  width: auto;
-}
-
-/* List helpers
-*/
+///----------List Helper
 @mixin strip-list() {
   list-style: none;
   padding-left: 0;
 }
 
-/* keystroke savers */
-@mixin nuke() {
-  padding: 0;
-  margin: 0;
-}
-
-@mixin bg-img() {
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-@mixin wxh($width:1em, $height:$width) {
-  width: $width;
-  height: $height;
-}
-
-@mixin v($prop, $top, $bottom:$top) {
-  #{$prop}-top: $top;
-  #{$prop}-bottom: $bottom;
-}
-
-@mixin h($prop, $left, $right:$left) {
-  #{$prop}-left: $left;
-  #{$prop}-right: $right;
-}
-
-/* Text helpers */
-
-@mixin screen-reader-text {
+//----------Screen Reader Text
+@mixin srt {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
   position: absolute !important;
@@ -109,38 +46,8 @@
   overflow: hidden;
 }
 
-@mixin truncate($truncation-boundary, $vertical: false) {
-  @if $vertical {
-    max-height: $truncation-boundary;
-  } @else {
-    max-width: $truncation-boundary;
-  }
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@mixin headings($from: 1, $to: 6) {
-  @for $i from $from through $to {
-    h#{$i}, .h#{$i} {
-      @content
-    }
-  }
-}
-
-/* graphics */
-
-@mixin gpu($backface: true, $perspective: 1000) {
-  @if $backface {
-    backface-visibility: hidden;
-  }
-  perspective: $perspective;
-}
-
-
 
 //----------Form Fields / Groupings
-
 @mixin placeholder() {
   ::placeholder {
     @content;
@@ -164,70 +71,5 @@
   :-moz-placeholder {
     @content;
   }
-}
-
-@mixin text-inputs() {
-  input[type=email],
-  input[type=number],
-  input[type=password],
-  input[type=search],
-  input[type=tel],
-  input[type=text],
-  input[type=url],
-  textarea
-  {
-    @content;
-  }
-}
-
-@mixin block-inputs() {
-  @include text-inputs {
-    @content;
-  }
-  select {
-    @content;
-  }
-}
-
-@mixin bool-inputs() {
-  input[type=checkbox],
-  input[type=radio] {
-    @content;
-  }
-}
-
-@mixin form-controls() {
-  @include block-inputs() {
-    @content;
-  }
-  @include bool-inputs() {
-    @content;
-  }
-}
-
-@mixin form-buttons() {
-  input[type=button],
-  input[type=submit],
-  button[type=submit]
-  {
-    @content;
-  }
-}
-
-@mixin form-elements() {
-  @include form-controls() {
-    @content;
-  }
-  @include form-buttons() {
-    @content;
-  }
-}
-
-
-
-//----------Breakpoints
-
-@mixin breakpoint($point) {
-  @media screen and (min-width: $point) { @content; }
 }
 
