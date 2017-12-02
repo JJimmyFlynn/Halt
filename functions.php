@@ -63,7 +63,6 @@ $halt_includes = [
   'lib/admin.php',           // Admin Customizations
   'lib/assets.php',          // Scripts and stylesheets
   'lib/setup.php',           // Theme setup
-  'lib/utils.php',           // Theme utility toolbox
   'lib/twig-functions.php',  // register Twig functions to use in templates
   'lib/twig-filters.php',    // register Twig filters to use in templates
   'lib/timber.php'           // Timber setup and additions

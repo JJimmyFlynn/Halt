@@ -1,0 +1,4 @@
+name: halt
+recipe: wordpress
+config:
+  webroot: .
