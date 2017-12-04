@@ -1,24 +1,21 @@
 <?php
 
-namespace Halt\Assets;
-
-use Halt\Utils;
+namespace Halt\Utils;
+/**
+ * General theme utilities
+ */
 
 /**
- * Enqueue theme assets
+ * Returns the path to theme/dist
+ * @return String
  */
-function assets() {
-  /**
-   * Enqueue theme css
-   */
-  wp_enqueue_style('halt/css', elixir('css/main.css'), false, null);
-
-  /**
-   * Enqueue theme javascript
-   */
-  wp_enqueue_script('halt/js', elixir('js/main.js'), null, null);
+function assets($path, $uri=true) {
+  if ($uri) {
+    return trailingslashit(get_stylesheet_directory_uri()).'dist/'.$path;
+  }
+  return trailingslashit(get_stylesheet_directory()).'dist/'.$path;
 }
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+add_filter('assets', __NAMESPACE__ . '\\assets');
 
 /**
  * Gets current asset file with appended revision hash
@@ -34,6 +31,6 @@ function elixir($file) {
   }
 
   if (isset($manifest[$file])) {
-      return Utils\assets($manifest[$file]);
+      return assets($manifest[$file]);
   }
 }

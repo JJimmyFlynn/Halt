@@ -1,21 +1,31 @@
 <?php
 
-namespace Halt\HaltTheme;
-
-use Halt\HaltBaseTheme;
+require_once( __DIR__ . '/halt-base-theme.php' );
 
 class HaltTheme extends HaltBaseTheme {
+
   public function __construct() {
-    parent::construct();
-    add_filter('body_class', array( &$this, __NAMESPACE__ . '\\body_class' ));
+    parent::__construct();
+    add_filter('body_class', array( $this, 'body_class' ));
   }
+
+  /**
+   * Add to the global Timber context here
+   */
+  public function add_to_timber_context($context) {
+
+    /**
+     * Add menu(s) to global Timber context
+     */
+    $context['primary_navigation'] = new TimberMenu('primary_navigation');
+
+    return $context;
+  }
+  
   /**
    * Define acceptable body classes
    */
-  /**
- * Add allowed <body> classes
- */
-function body_class($classes) {
+  public function body_class($classes) {
   
     $allowed_classes = [
       'home',
@@ -25,8 +35,8 @@ function body_class($classes) {
     $classes = array_intersect($classes, $allowed_classes);
   
     return $classes;
+    }
   }
-}
 
 // Go Go Gadget
 new HaltTheme();

@@ -60,12 +60,10 @@ if ( isset($_ENV['PANTHEON_ENVIRONMENT']) && in_array($_ENV['PANTHEON_ENVIRONMEN
  *
  */
 $halt_includes = [
-  'lib/admin.php',           // Admin Customizations
-  'lib/assets.php',          // Scripts and stylesheets
-  'lib/setup.php',           // Theme setup
-  'lib/twig-functions.php',  // register Twig functions to use in templates
-  'lib/twig-filters.php',    // register Twig filters to use in templates
-  'lib/timber.php'           // Timber setup and additions
+  'lib/admin.php',            // Admin Customizations
+  'lib/halt-base-theme.php',  // Base Theme Setip
+  'lib/halt-init-theme.php',  // Site-specific Theme Setup
+  'lib/utils.php'             // General Theme Utilities
 ];
 
 foreach ($halt_includes as $file) {

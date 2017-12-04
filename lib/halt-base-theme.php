@@ -1,6 +1,6 @@
 <?php
 
-namespace Halt\HaltBaseTheme;
+use Halt\Utils;
 
 /**
  * This class contains common setup intended to be used for all themes. 
@@ -8,12 +8,62 @@ namespace Halt\HaltBaseTheme;
 abstract class HaltBaseTheme {
   
   public function __construct() {
-    add_action( 'after_setup_theme', array( &$this, 'basic_supports' ) );
-    add_action( 'after_setup_theme', array( &$this, 'soil_theme_supports' ) );
-    add_action( 'after_setup_theme', array( &$this, 'halt_extras' ) );
+    add_action( 'init', array( $this, 'timber_setup' ) );
+    add_filter( 'get_twig', array( $this, 'twig_setup' ) );
+    add_filter( 'timber/context', array( $this, 'add_to_timber_context' ) );
+    add_filter( 'get_twig', array( $this, 'add_filters' ) );
+    add_action( 'after_setup_theme', array( $this, 'basic_supports' ) );
+    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 100);
+    add_action( 'after_setup_theme', array( $this, 'soil_theme_supports' ) );
+    add_action( 'after_setup_theme', array( $this, 'halt_extras' ) );
   }
 
-  abstract protected function body_class();
+  abstract protected function body_class( $classes );
+
+  abstract protected function add_to_timber_context($context);
+
+  /**
+  * Initialize Timber
+  */
+  function timber_setup() {
+    $timber = new \Timber\Timber();
+  }
+
+  /**
+  * Initialize Twig
+  */
+  function twig_setup($twig) {
+    $twig->addExtension(new \Twig_Extension_StringLoader());
+    return $twig;
+  }
+
+  /**
+   * Add filters to Twig
+   */
+  function add_filters($twig) {
+    
+      /**
+       * Returns the path to theme/dist
+       * @return String
+       */
+      $twig->addFilter(new \Twig_SimpleFilter('halt_assets',
+        function($path) {
+          return Utils\assets($path);
+        }
+      ));
+    
+      /**
+       * Returns the path to theme/dist/images
+       * @return String
+       */
+      $twig->addFilter(new \Twig_SimpleFilter('halt_images',
+        function($path) {
+          return Utils\assets('images/'.$path);
+        }
+      ));
+    
+      return $twig;
+    }
 
   /**
    * Add basic support theme supports
@@ -32,6 +82,22 @@ abstract class HaltBaseTheme {
     // Enable HTML5 markup support
     // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
     add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
+
+    /**
+     * Removes basic WP custom fields box
+     * 
+     * Since Halt uses ACF the rendering of the custom fields box is extra
+     * overhead that can be removed to improve admin area performance
+     */
+    add_filter('acf/settings/remove_wp_meta_box', '__return_true');
+  }
+
+  /**
+   * Enqueue theme assets
+   */
+  public function enqueue_assets() {
+    wp_enqueue_style('halt/css', Utils\elixir('css/main.css'), false, null);
+    wp_enqueue_script('halt/js', Utils\elixir('js/main.js'), null, null);
   }
 
   /** Enable features from Soil when plugin is activated
