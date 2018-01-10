@@ -4,8 +4,6 @@
  * Admin Panel Customizations
  */
 
-namespace Halt\Admin;
-
  /**
  * Add Favicon to Admin
  */
