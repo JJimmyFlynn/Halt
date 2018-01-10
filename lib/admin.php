@@ -4,35 +4,30 @@
  * Admin Panel Customizations
  */
 
- /**
- * Add Favicon to Admin
- */
-function halt_add_favicon() {
-  $favicon_url = get_stylesheet_directory_uri() . '/favicon.ico';
-  echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
-}
-add_action('login_head', __NAMESPACE__. '\\halt_add_favicon');
-add_action('admin_head', __NAMESPACE__. '\\halt_add_favicon');
+class HaltThemeAdmin {
+  public function __construct() {
+    add_action('login_head', array($this, 'add_favicon'));
+    add_action('admin_head', array($this, 'add_favicon'));
+    add_action('login_head', array($this, 'custom_login_styles'));
+    add_filter('login_headerurl', create_function(false,"return '" . home_url() . "';"));
+    add_filter('login_headertitle', create_function(false,"return '" . get_bloginfo('name') . "';"));
 
-/**
+  }
+
+  /**
+   * Add Favicon to Admin
+   */
+  public function add_favicon() {
+    $favicon_url = get_stylesheet_directory_uri() . '/favicon.ico';
+    echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
+  }
+
+  /**
   * Customize Login Screen
   */
-function halt_custom_login() { ?>
-    <style type="text/css">
-        .login h1 a {
-            background-image: url('');
-            background-position: center bottom;
-            background-size: 125px;
-            width: 150px;
-            height: 150px;
-            margin-bottom: 35px;
-        }
-    </style>
-<?php }
-add_action( 'login_head', __NAMESPACE__ . '\\halt_custom_login');
+  public function custom_login_styles() {
+    wp_enqueue_style('halt/admin-css', user_trailingslashit(get_template_directory_uri()) . 'admin.css', false, null);
+  }
+}
 
-/**
- * Change logo title and href
- */
-add_filter('login_headerurl', create_function(false,"return '" . home_url() . "';"));
-add_filter('login_headertitle', create_function(false,"return '" . get_bloginfo('name') . "';"));
+new HaltThemeAdmin();

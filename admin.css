@@ -1,0 +1,12 @@
+body {
+  background: black;
+}
+
+.login h1 a {
+  background-image: url('');
+  background-position: center bottom;
+  background-size: 125px;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 35px;
+}
