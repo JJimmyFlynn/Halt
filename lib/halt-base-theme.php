@@ -96,8 +96,8 @@ abstract class HaltBaseTheme {
    * Enqueue theme assets
    */
   public function enqueue_assets() {
-    wp_enqueue_style('halt/css', Utils\elixir('css/main.css'), false, null);
-    wp_enqueue_script('halt/js', Utils\elixir('js/main.js'), null, null);
+    wp_enqueue_style('halt/css', Utils\assets('css/main.css'), false, null);
+    wp_enqueue_script('halt/js', Utils\assets('js/main.js'), null, null);
   }
 
   /** Enable features from Soil when plugin is activated
