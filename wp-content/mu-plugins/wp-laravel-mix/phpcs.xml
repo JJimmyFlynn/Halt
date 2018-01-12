@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ruleset name="Sourceboat">
-  <description>Sourceboat Coding Standards for WordPress Plugins</description>
-  <rule ref="PSR2"></rule>
-</ruleset>
