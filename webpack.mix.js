@@ -30,7 +30,7 @@ let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
  *
  * EDIT THIS
  */
-const browserSyncProxy = 'http://halt.lndo.site:8000';
+const browserSyncProxy = 'http://halt-wordpress.lndo.site:8000';
 
 /**
  * Set the public path so Mix puts its 'mix-manifest.json'
@@ -75,7 +75,9 @@ mix.copyDirectory('assets/fonts', 'dist/fonts');
 /**
  * Versioning Task
  */
-mix.version();
+if(mix.inProduction) {
+  mix.version();
+}
 
 /**
  * Browsersync

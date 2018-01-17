@@ -1,7 +1,7 @@
 <?php
 
 if (!class_exists('Timber')){
-  echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
+  halt_error( 'Timber must be installed for this theme to function. Run composer  install or install Timer via the WordPress plugins page.', 'Timber Not Found');
 }
 
 $context = Timber::get_context();

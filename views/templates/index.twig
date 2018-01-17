@@ -3,26 +3,32 @@
 {% block head %}
   {% include 'partials/head.twig' %}
 
-  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo:100" rel="stylesheet">
+  
 
   <style>
     body {
-      background-color: #1B2B34;
-      font-family: 'Oxygen', sans-serif;
-      color: #EC6153;
+      background-color: #ECF0F1;
+      font-family: 'Exo', sans-serif;
+      color: #4C5A69;
       margin: 0;
       padding-bottom: 4rem;
+      font-weight: 100;
     }
-    a {
-      color: #EC6153;
+    .main {
+      text-align: center;
     }
     .container {
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
       max-width: 700px;
       margin: 0 auto;
     }
     h1 {
       font-size: 4rem;
+      margin: 0 0 0.5rem 0;
     }
     ul {
       display: inline-block;
@@ -31,33 +37,12 @@
     p {
       font-size: 2rem;
     }
-    .site-header {
-      padding: 1rem;
-      text-align: center;
-    }
-    .main {
-      text-align: center;
-    }
-    .site-footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      padding: 1rem;
-      background-color: #1B2B34;
-      text-align: center;
-    }
   </style>
 {% endblock %}
 
 {% block content %}
   <div class="container">
     <h1>Halt and Catchfire!</h1>
-
     <p>Halt is installed and ready.</p>
-
-    <div>
-      <img src="{{ 'sample.gif' | halt_images }}" alt="sample image">
-    </div>
-
   </div>
 {% endblock %}
