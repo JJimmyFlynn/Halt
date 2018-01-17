@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e4cadeda84009a59b4d851e60d574e0",
+    "content-hash": "69054432594c2e53f8312a1c251f0709",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -113,16 +113,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.3.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045"
+                "reference": "049797d727261bf27f2690430d935067710049c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/79ad876c7498c0bbfe7eed065b8651c93bfd6045",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045",
+                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
+                "reference": "049797d727261bf27f2690430d935067710049c2",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +134,7 @@
             },
             "require-dev": {
                 "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "4.1.*"
+                "phpunit/phpunit": "^4.8.36"
             },
             "type": "composer-plugin",
             "extra": {
@@ -168,6 +168,7 @@
                 "Hurad",
                 "ImageCMS",
                 "Kanboard",
+                "Lan Management System",
                 "MODX Evo",
                 "Mautic",
                 "Maya",
@@ -191,6 +192,7 @@
                 "croogo",
                 "dokuwiki",
                 "drupal",
+                "eZ Platform",
                 "elgg",
                 "expressionengine",
                 "fuelphp",
@@ -203,14 +205,18 @@
                 "lavalite",
                 "lithium",
                 "magento",
+                "majima",
                 "mako",
                 "mediawiki",
                 "modulework",
+                "modx",
                 "moodle",
+                "osclass",
                 "phpbb",
                 "piwik",
                 "ppi",
                 "puppet",
+                "pxcms",
                 "reindex",
                 "roundcube",
                 "shopware",
@@ -223,60 +229,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-04-24T06:37:16+00:00"
-        },
-        {
-            "name": "sourceboat/wp-laravel-mix",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sourceboat/wp-laravel-mix.git",
-                "reference": "de71df49cfebad957511ee3fe6e9aa429969a7c7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sourceboat/wp-laravel-mix/zipball/de71df49cfebad957511ee3fe6e9aa429969a7c7",
-                "reference": "de71df49cfebad957511ee3fe6e9aa429969a7c7",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "^1.3",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "type": "wordpress-muplugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sourceboat",
-                    "email": "info@sourceboat.com"
-                }
-            ],
-            "description": "Get versioned Laravel Mix file paths in WordPress.",
-            "keywords": [
-                "laravel",
-                "mix",
-                "wordpress"
-            ],
-            "time": "2017-05-07T19:02:48+00:00"
+            "time": "2017-12-29T09:13:20+00:00"
         },
         {
             "name": "timber/timber",
-            "version": "1.3.2",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "ba10f09a3cccb38619da2012bd9d88bb724bcb2f"
+                "reference": "c6d04e1e4ff4526288c7b95936bbb578dfb7d504"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/ba10f09a3cccb38619da2012bd9d88bb724bcb2f",
-                "reference": "ba10f09a3cccb38619da2012bd9d88bb724bcb2f",
+                "url": "https://api.github.com/repos/timber/timber/zipball/c6d04e1e4ff4526288c7b95936bbb578dfb7d504",
+                "reference": "c6d04e1e4ff4526288c7b95936bbb578dfb7d504",
                 "shasum": ""
             },
             "require": {
@@ -292,8 +258,6 @@
                 "wpackagist-plugin/co-authors-plus": "3.*"
             },
             "suggest": {
-                "jarednova/markdowndocs": "dev-master for generating docs",
-                "phpdocumentor/phpdocumentor": "2.* for generating docs",
                 "satooshi/php-coveralls": "1.0.* for code coverage"
             },
             "type": "library",
@@ -326,20 +290,20 @@
                 "timber",
                 "twig"
             ],
-            "time": "2017-06-12T21:56:41+00:00"
+            "time": "2018-01-02T18:56:42+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v1.34.3",
+            "version": "v1.35.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "451c6f4197e113e24c1c85bc3fc8c2d77adeff2e"
+                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/451c6f4197e113e24c1c85bc3fc8c2d77adeff2e",
-                "reference": "451c6f4197e113e24c1c85bc3fc8c2d77adeff2e",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/daa657073e55b0a78cce8fdd22682fddecc6385f",
+                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f",
                 "shasum": ""
             },
             "require": {
@@ -353,7 +317,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.34-dev"
+                    "dev-master": "1.35-dev"
                 }
             },
             "autoload": {
@@ -391,7 +355,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-06-07T18:45:17+00:00"
+            "time": "2017-09-27T18:06:46+00:00"
         },
         {
             "name": "upstatement/routes",
