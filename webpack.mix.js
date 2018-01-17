@@ -1,5 +1,17 @@
 let mix = require('laravel-mix');
+let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
 mix.setPublicPath('./dist');
+
+mix.webpackConfig({
+  plugins: [
+    new ImageminPlugin({
+      pngquant: {
+        quality: '95-100',
+      },
+      test: /\.(jpe?g|png|gif|svg)$/i
+    })
+  ]
+});
 
 /**
  * SASS Task
@@ -11,8 +23,6 @@ mix.sass('assets/sass/main.scss', 'dist/css');
  */
 mix.js('assets/js/main.js', 'dist/js');
 
-mix.version();
-
 /**
  * Copy Tasks
  */
@@ -22,4 +32,4 @@ mix.copyDirectory('assets/fonts', 'dist/fonts');
 /**
  * Versioning Task
  */
-// mix.version();
+mix.version();
