@@ -9,13 +9,15 @@ abstract class HaltBaseTheme {
   
   public function __construct() {
     add_action( 'init', array( $this, 'timber_setup' ) );
+    add_action( 'init', array( $this, 'remove_emojis' ) );
+    add_filter( 'pings_open', '__return_false', PHP_INT_MAX );
+		add_filter( 'wp_headers', array( $this, 'disable_pingbacks' ) );
     add_filter( 'get_twig', array( $this, 'twig_setup' ) );
     add_filter( 'timber/context', array( $this, 'add_to_timber_context' ) );
     add_filter( 'get_twig', array( $this, 'add_filters' ) );
     add_action( 'after_setup_theme', array( $this, 'basic_supports' ) );
-    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 100);
+    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 100 );
     add_action( 'after_setup_theme', array( $this, 'soil_theme_supports' ) );
-    add_action( 'after_setup_theme', array( $this, 'halt_extras' ) );
   }
 
   abstract protected function body_class( $classes );
@@ -110,21 +112,21 @@ abstract class HaltBaseTheme {
   }
 
   /**
-   * Enable features from Halt Extras plugin
+   * Remove emoji asset enqueues
    */
-  public function halt_extras() {
-    // Remove admin menu items
-    add_theme_support('halt-menu', [
-      'edit-comments.php',
-    ]);
-    // Remove dashboard metaboxes
-    add_theme_support('halt-dashboard', [
-      'dashboard_right_now',
-      'dashboard_primary',
-      'dashboard_secondary',
-      'dashboard_quick_press',
-    ]);
-    // Clean up homepage edit page
-    add_theme_support('halt-clean-homepage');
-  }
+  public function remove_emojis() 
+	{
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+		remove_action( 'admin_print_styles', 'print_emoji_styles' );
+	}
+
+  /**
+   * Disable pingback
+   */
+  public function disable_pingbacks( $headers ) {
+		unset( $headers['X-Pingback'] );
+		return $headers;
+	}
 }
