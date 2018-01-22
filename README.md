@@ -12,13 +12,13 @@ Halt is the a WordPress starter theme that utilizes either [Timber + Twig](https
 
 ## Theme installation
 
-1.) Clone this repo to you machine
-2.) Run `composer install` to install Timber + Twig and create the autoloader file
-3.) Run `yarn install` or `npm install` to install the theme dependencies
-4.) Run `npm run dev` to compile the initial theme assets
-5.) Run `wp theme activate {theme_folder_name}`
-6.) Visit your WordPress install in your browser and you will be gretted with the Halt welcome screen
-7.) Get to work!
+1. Clone this repo to you machine
+2. Run `composer install` to install Timber + Twig and create the autoloader file
+3. Run `yarn install` or `npm install` to install the theme dependencies
+4. Run `npm run dev` to compile the initial theme assets
+5. Run `wp theme activate {theme_folder_name}`
+6. Visit your WordPress install in your browser and you will be gretted with the Halt welcome screen
+7. Get to work!
 
 ## Theme setup
 
