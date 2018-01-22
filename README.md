@@ -23,9 +23,10 @@ Halt is the a WordPress starter theme that utilizes either [Timber + Twig](https
 ## Theme setup
 
 Halt's main configuration is setup in two classes: HaltBaseTheme and HaltTheme found in `/lib/halt-base-theme.php` and `/lib/halt-init-theme.php` respectively.
-The HaltBaseTheme class contains common functionality useful for all themes built with Halt.
-All additional configuration should be done in the HaltTheme class.
-If more PHP files are added to the `/lib` folder, be sure to require them in `functions.php`
+
+The `HaltBaseTheme` class contains common functionality useful for all themes built with Halt. All additional configuration should be done in the `HaltTheme` class.
+
+**N.B.** If more PHP files are added to the `/lib` folder, be sure to require them in `functions.php`
 
 ## Theme development
 
