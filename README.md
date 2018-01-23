@@ -1,5 +1,5 @@
 # Halt
-Halt is the a WordPress starter theme that utilizes either [Timber + Twig](https://www.upstatement.com/timber/) or a vanilla WordPress setup
+Halt is a WordPress starter theme that utilizes either [Timber + Twig](https://www.upstatement.com/timber/) or a vanilla WordPress setup
 
 ## Requirements
 
