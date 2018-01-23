@@ -40,8 +40,9 @@ require_once( $composer );
 
 /**
  * Ensure node dependencies have been loaded
+ * when in a development environment
  */
-if ( isset($_ENV['PANTHEON_ENVIRONMENT']) && in_array($_ENV['PANTHEON_ENVIRONMENT'], array('kalabox')) ) {
+if ( isset($_ENV['PANTHEON_ENVIRONMENT']) && in_array($_ENV['PANTHEON_ENVIRONMENT'], array('lando')) || WP_ENV == 'development' ) {
   if( !file_exists( __DIR__ . '/node_modules' ) ) {
     halt_error(
       'Run <code>yarn install</code> or <code>npm install</code> to install theme dependencies.',
