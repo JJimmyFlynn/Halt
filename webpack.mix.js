@@ -57,9 +57,9 @@ mix.webpackConfig({
 });
 
 /**
- * SASS Task
+ * Stylus Task
  */
-mix.sass('assets/sass/main.scss', 'dist/css');
+mix.stylus('assets/stylus/main.styl', 'dist/css');
 
 /**
  * JS Task

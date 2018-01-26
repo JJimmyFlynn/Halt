@@ -9,7 +9,7 @@
 /* ==========================================================================
   Trusty Clearfix
 ========================================================================== */
-@mixin clearfix() {
+clearfix() {
   &:after {
     content: "";
     display: block;
@@ -20,23 +20,23 @@
 /* ==========================================================================
   Breakpoints
 ========================================================================== */
-@mixin breakpoint($point) {
+breakpoint($point) {
   @media screen and (min-width: $point) { @content; }
 }
 
 
 /* ==========================================================================
-  Helper
+  Helpers
 ========================================================================== */
 
 ///----------List Helper
-@mixin strip-list() {
+strip-list() {
   list-style: none;
   padding-left: 0;
 }
 
 //----------Screen Reader Text
-@mixin srt {
+screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
   position: absolute !important;
@@ -48,7 +48,7 @@
 
 
 //----------Form Fields / Groupings
-@mixin placeholder() {
+placeholder() {
   ::placeholder {
     @content;
   }
