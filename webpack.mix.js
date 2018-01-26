@@ -59,7 +59,11 @@ mix.webpackConfig({
 /**
  * Stylus Task
  */
-mix.stylus('assets/stylus/main.styl', 'dist/css');
+mix.stylus('assets/stylus/main.styl', 'dist/css').options({
+  postCss: [
+    require('rucksack-css')()
+  ]
+});
 
 /**
  * JS Task
