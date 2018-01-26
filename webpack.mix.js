@@ -60,6 +60,9 @@ mix.webpackConfig({
  * Stylus Task
  */
 mix.stylus('assets/stylus/main.styl', 'dist/css').options({
+  use : [
+    require('rupture')()
+  ],
   postCss: [
     require('rucksack-css')()
   ]
