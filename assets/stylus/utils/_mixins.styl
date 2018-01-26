@@ -20,8 +20,8 @@ clearfix() {
 /* ==========================================================================
   Breakpoints
 ========================================================================== */
-breakpoint($point) {
-  @media screen and (min-width: $point) { @content; }
+breakpoint(point) {
+  @media screen and (min-width: point) { {block} }
 }
 
 
@@ -36,7 +36,7 @@ strip-list() {
 }
 
 //----------Screen Reader Text
-screen-reader-text {
+screen-reader-text() {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
   position: absolute !important;
@@ -50,26 +50,26 @@ screen-reader-text {
 //----------Form Fields / Groupings
 placeholder() {
   ::placeholder {
-    @content;
+    {block}
   }
   :placeholder {
-    @content;
+    {block}
   }
   /* Chrome/Opera/Safari */
   ::-webkit-input-placeholder {
-    @content;
+    {block}
   }
   /* Firefox 19+ */
   ::-moz-placeholder {
-    @content;
+    {block}
   }
   /* IE 10+ */
   :-ms-input-placeholder {
-    @content;
+    {block}
   }
   /* Firefox 18- */
   :-moz-placeholder {
-    @content;
+    {block}
   }
 }
 
