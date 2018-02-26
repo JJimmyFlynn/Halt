@@ -14,8 +14,8 @@ const routes = {
   // Home page
   home,
   // About us page, not the change from about-us to aboutUs
-  aboutUs,
+  aboutUs
 };
 
 // Load all the things
-$(document).ready(() => new Router(routes).loadEvents());
+$('document').ready(() => new Router(routes).loadEvents());
