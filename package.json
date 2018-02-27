@@ -48,6 +48,7 @@
       "browser": true
     },
     "rules": {
+      "no-new": false,
       "prettier/prettier": [
         "error",
         {
