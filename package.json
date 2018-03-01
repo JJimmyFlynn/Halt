@@ -27,12 +27,12 @@
     "browser-sync": "^2.23.5",
     "browser-sync-webpack-plugin": "^1.2.0",
     "cross-env": "^5.1",
-    "imagemin-webpack-plugin": "^1.6.1",
-    "laravel-mix": "^1.0",
     "eslint": "^4.18.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-xo": "^0.20.1",
     "eslint-plugin-prettier": "^2.6.0",
+    "imagemin-webpack-plugin": "^1.6.1",
+    "laravel-mix": "^1.0",
     "prettier": "^1.10.2"
   },
   "dependencies": {

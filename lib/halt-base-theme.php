@@ -8,7 +8,7 @@ use Halt\Utils;
 abstract class HaltBaseTheme {
   
   public function __construct() {
-    add_action( 'init', array( $this, 'timber_setup' ) );
+    add_action( 'after_setup_theme', array( $this, 'timber_setup' ) );
     add_action( 'init', array( $this, 'remove_emojis' ) );
     add_filter( 'pings_open', '__return_false', PHP_INT_MAX );
 		add_filter( 'wp_headers', array( $this, 'disable_pingbacks' ) );
