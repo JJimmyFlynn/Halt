@@ -33,19 +33,24 @@
     "eslint-plugin-prettier": "^2.6.0",
     "imagemin-webpack-plugin": "^1.6.1",
     "laravel-mix": "^1.0",
-    "prettier": "^1.10.2"
+    "prettier": "^1.10.2",
+    "prettier-stylelint-formatter": "^0.5.0",
+    "stylelint": "^9.1.1",
+    "stylelint-config-shopify": "^5.0.0"
   },
   "dependencies": {
     "jquery": "^3.1.1"
   },
   "eslintConfig": {
     "extends": [
-      "xo",
+      "xo/esnext",
+      "xo/browser",
       "prettier"
     ],
     "env": {
       "es6": true,
-      "browser": true
+      "browser": true,
+      "node": true
     },
     "rules": {
       "no-new": false,
@@ -59,6 +64,15 @@
     },
     "plugins": [
       "prettier"
-    ]
+    ],
+    "stylelint": {
+      "extends": [
+        "stylelint-config-shopify/prettier"
+      ],
+      "rules": {
+        "selector-class-pattern": null,
+        "scss/double-slash-comment-whitespace-inside": null
+      }
+    }
   }
 }
