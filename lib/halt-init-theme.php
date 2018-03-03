@@ -1,5 +1,8 @@
 <?php
 
+namespace Halt;
+use TimberMenu;
+
 class HaltTheme extends HaltBaseTheme {
 
   public function __construct() {

@@ -1,6 +1,10 @@
 <?php
 
+namespace Halt;
 use Halt\Utils;
+use Timber;
+use Twig_Extension_StringLoader;
+use Twig_SimpleFilter;
 
 /**
  * This class contains common setup intended to be used for all themes. 
@@ -28,14 +32,14 @@ abstract class HaltBaseTheme {
   * Initialize Timber
   */
   function timber_setup() {
-    $timber = new \Timber\Timber();
+    $timber = new Timber\Timber();
   }
 
   /**
   * Initialize Twig
   */
   function twig_setup($twig) {
-    $twig->addExtension(new \Twig_Extension_StringLoader());
+    $twig->addExtension(new Twig_Extension_StringLoader());
     return $twig;
   }
 
@@ -48,7 +52,7 @@ abstract class HaltBaseTheme {
        * Returns the path to theme/dist
        * @return String
        */
-      $twig->addFilter(new \Twig_SimpleFilter('halt_assets',
+      $twig->addFilter(new Twig_SimpleFilter('halt_assets',
         function($path) {
           return Utils\assets($path);
         }
@@ -58,7 +62,7 @@ abstract class HaltBaseTheme {
        * Returns the path to theme/dist/images
        * @return String
        */
-      $twig->addFilter(new \Twig_SimpleFilter('halt_images',
+      $twig->addFilter(new Twig_SimpleFilter('halt_images',
         function($path) {
           return Utils\assets('images/'.$path);
         }

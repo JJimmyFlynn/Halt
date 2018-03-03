@@ -1,5 +1,7 @@
 <?php
 
+namespace Halt;
+
 /**
  * Admin Panel Customizations
  */
