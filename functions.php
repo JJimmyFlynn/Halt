@@ -15,8 +15,8 @@ function halt_error ($message, $subtitle = '', $title = '') {
 /**
  * Ensure compatible version of PHP is being used
  */
-if( version_compare( '5.6.4', phpversion(), '>=' ) ) {
-  halt_error( 'You must be using PHP 5.6.4 or greater.', 'Invalid PHP version');
+if( version_compare( '7.0.0', phpversion(), '>=' ) ) {
+  halt_error( 'You must be using PHP 7.0 or greater.', 'Invalid PHP version');
 }
 
 /**
