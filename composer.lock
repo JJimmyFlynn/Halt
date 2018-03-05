@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9cd07c8a45a11e2c8c611310b27f061",
+    "content-hash": "6a3b03404974af8b0ac51424fb90ed48",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -230,6 +230,43 @@
                 "zikula"
             ],
             "time": "2017-12-29T09:13:20+00:00"
+        },
+        {
+            "name": "mindkomm/theme-lib-mix",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MINDKomm/theme-lib-mix.git",
+                "reference": "f37cc1479c1a8c35597bc747d5f07ed118ca0efb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MINDKomm/theme-lib-mix/zipball/f37cc1479c1a8c35597bc747d5f07ed118ca0efb",
+                "reference": "f37cc1479c1a8c35597bc747d5f07ed118ca0efb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "mix.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lukas Gaechter",
+                    "email": "lukas.gaechter@mind.ch",
+                    "homepage": "https://www.mind.ch"
+                }
+            ],
+            "description": "A Laravel Mix function for WordPress themes",
+            "time": "2018-02-22T12:55:34+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

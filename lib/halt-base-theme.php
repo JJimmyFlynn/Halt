@@ -7,10 +7,10 @@ use Twig_Extension_StringLoader;
 use Twig_SimpleFilter;
 
 /**
- * This class contains common setup intended to be used for all themes. 
+ * This class contains common setup intended to be used for all themes.
  */
 abstract class HaltBaseTheme {
-  
+
   public function __construct() {
     add_action( 'after_setup_theme', array( $this, 'timber_setup' ) );
     add_action( 'init', array( $this, 'remove_emojis' ) );
@@ -47,7 +47,7 @@ abstract class HaltBaseTheme {
    * Add filters to Twig
    */
   function add_filters($twig) {
-    
+
       /**
        * Returns the path to theme/dist
        * @return String
@@ -57,7 +57,7 @@ abstract class HaltBaseTheme {
           return Utils\assets($path);
         }
       ));
-    
+
       /**
        * Returns the path to theme/dist/images
        * @return String
@@ -67,7 +67,7 @@ abstract class HaltBaseTheme {
           return Utils\assets('images/'.$path);
         }
       ));
-    
+
       return $twig;
     }
 
@@ -91,7 +91,7 @@ abstract class HaltBaseTheme {
 
     /**
      * Removes basic WP custom fields box
-     * 
+     *
      * Since Halt uses ACF the rendering of the custom fields box is extra
      * overhead that can be removed to improve admin area performance
      */
@@ -102,8 +102,8 @@ abstract class HaltBaseTheme {
    * Enqueue theme assets
    */
   public function enqueue_assets() {
-    wp_enqueue_style('halt/css', Utils\assets('css/main.css'), false, null);
-    wp_enqueue_script('halt/js', Utils\assets('js/main.js'), null, null);
+    wp_enqueue_style('halt/css', mix('css/main.css', 'dist'), false, null);
+    wp_enqueue_script('halt/js', mix('js/main.js', 'dist'), null, null);
   }
 
   /** Enable features from Soil when plugin is activated
@@ -118,7 +118,7 @@ abstract class HaltBaseTheme {
   /**
    * Remove emoji asset enqueues
    */
-  public function remove_emojis() 
+  public function remove_emojis()
 	{
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );

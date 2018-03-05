@@ -8,7 +8,8 @@
   "require": {
     "php": ">=5.4.0",
     "composer/installers": "~1.0",
-    "timber/timber": "^1.7"
+    "timber/timber": "^1.7",
+    "mindkomm/theme-lib-mix": "^1.0"
   },
   "autoload": {
     "psr-4": {
