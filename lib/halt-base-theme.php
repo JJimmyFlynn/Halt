@@ -11,36 +11,41 @@ use Twig_SimpleFilter;
  */
 abstract class HaltBaseTheme {
 
-  public function __construct() {
+  function __construct() {
     add_action( 'after_setup_theme', array( $this, 'timber_setup' ) );
+    add_filter( 'get_twig', array( $this, 'twig_setup' ) );
+    add_filter( 'get_twig', array( $this, 'add_filters' ) );
+    add_filter( 'timber/context', array( $this, 'add_to_timber_context' ) );
+
+    add_action( 'init', array( $this, 'register_menus' ) );
+    add_filter('body_class', array( $this, 'body_class' ));
+    add_action( 'after_setup_theme', array( $this, 'basic_supports' ) );
+    add_action( 'after_setup_theme', array( $this, 'soil_theme_supports' ) );
+    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 100 );
+
     add_action( 'init', array( $this, 'remove_emojis' ) );
     add_filter( 'pings_open', '__return_false', PHP_INT_MAX );
 		add_filter( 'wp_headers', array( $this, 'disable_pingbacks' ) );
-    add_filter( 'get_twig', array( $this, 'twig_setup' ) );
-    add_filter( 'timber/context', array( $this, 'add_to_timber_context' ) );
-    add_filter( 'get_twig', array( $this, 'add_filters' ) );
-    add_action( 'after_setup_theme', array( $this, 'basic_supports' ) );
-    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 100 );
-    add_action( 'after_setup_theme', array( $this, 'soil_theme_supports' ) );
+
   }
 
-  abstract protected function body_class( $classes );
+  abstract public function body_class( $classes );
 
-  abstract protected function add_to_timber_context($context);
-  
-  abstract protected function regiter_menus();
+  abstract public function add_to_timber_context($context);
+
+  abstract public function register_menus();
 
   /**
   * Initialize Timber
   */
-  function timber_setup() {
+  public function timber_setup() {
     $timber = new Timber\Timber();
   }
 
   /**
   * Initialize Twig
   */
-  function twig_setup($twig) {
+  public function twig_setup($twig) {
     $twig->addExtension(new Twig_Extension_StringLoader());
     return $twig;
   }
@@ -48,7 +53,7 @@ abstract class HaltBaseTheme {
   /**
    * Add filters to Twig
    */
-  function add_filters($twig) {
+  public function add_filters($twig) {
 
       /**
        * Returns the path to theme/dist
@@ -115,7 +120,6 @@ abstract class HaltBaseTheme {
     add_theme_support('soil-clean-up');
     add_theme_support('soil-js-to-footer');
     // add_theme_support('soil-nice-search');
-    // add_theme_support('soil-relative-urls');
   }
 
   /**
