@@ -7,18 +7,16 @@ class HaltTheme extends HaltBaseTheme {
 
   public function __construct() {
     parent::__construct();
-    add_filter('body_class', array( $this, 'body_class' ));
-    add_action( 'init', array( $this, 'register_menus' ) );
     add_action( 'after_setup_theme', array( $this, 'halt_extras' ) );
   }
-  
+
   /**
    * Register WordPress menus
    */
   public function register_menus() {
-  register_nav_menus( [
-    'primary_navigation' => 'Primary Navigation'
-  ] );
+    register_nav_menus( [
+      'primary_navigation' => 'Primary Navigation'
+    ] );
   }
 
   /**
@@ -33,19 +31,19 @@ class HaltTheme extends HaltBaseTheme {
 
     return $context;
   }
-  
+
   /**
    * Define acceptable body classes
    */
   public function body_class($classes) {
-  
+
     $allowed_classes = [
       'home',
       'single',
     ];
-  
+
     $classes = array_intersect($classes, $allowed_classes);
-  
+
     return $classes;
     }
   /**
