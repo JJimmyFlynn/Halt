@@ -27,6 +27,8 @@ abstract class HaltBaseTheme {
   abstract protected function body_class( $classes );
 
   abstract protected function add_to_timber_context($context);
+  
+  abstract protected function regiter_menus();
 
   /**
   * Initialize Timber
