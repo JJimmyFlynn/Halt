@@ -59,12 +59,12 @@ mix.webpackConfig({
 /**
  * SASS Task
  */
-mix.sass('assets/sass/main.scss', 'dist/css');
+mix.sass('assets/sass/main.scss', 'dist/css').sourceMaps();
 
 /**
  * JS Task
  */
-mix.js('assets/js/main.js', 'dist/js');
+mix.js('assets/js/main.js', 'dist/js').sourceMaps();
 
 /**
  * Copy Tasks
@@ -82,4 +82,7 @@ if(mix.inProduction) {
 /**
  * Browsersync
  */
-mix.browserSync(browserSyncProxy);
+mix.browserSync({
+  proxy: browserSyncProxy,
+  files: ['dist/**/*.js', 'dist/**/*.css']
+});
