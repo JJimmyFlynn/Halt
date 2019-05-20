@@ -1,14 +1,14 @@
 {
-  "name": "catchfire/halt",
+  "name": "jflynn/halt",
   "type": "wordpress-theme",
   "license": "MIT",
   "keywords": [
     "wordpress"
   ],
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=7.0.0",
     "composer/installers": "~1.0",
-    "timber/timber": "^1.7",
+    "timber/timber": "^1.9.4",
     "mindkomm/theme-lib-mix": "^1.0"
   },
   "autoload": {
