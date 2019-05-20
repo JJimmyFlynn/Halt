@@ -35,8 +35,12 @@
     "laravel-mix": "^4.0",
     "prettier": "^1.10.2",
     "prettier-stylelint-formatter": "^0.5.1-beta.2",
+    "resolve-url-loader": "2.3.1",
+    "sass": "^1.20.1",
+    "sass-loader": "7.*",
     "stylelint": "^9.10.1",
-    "stylelint-config-shopify": "^7.2.1"
+    "stylelint-config-shopify": "^7.2.1",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
     "jquery": "^3.1.1"
