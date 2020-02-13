@@ -38,7 +38,7 @@ Halt uses [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) as its build 
   * Runs all tasks
   * Alias for `npm run development`
 
-* `npm run prod --production`
+* `npm run prod`
   * Runs all tasks and minifys JS and CSS
   * Alias for `npm run production`
 
